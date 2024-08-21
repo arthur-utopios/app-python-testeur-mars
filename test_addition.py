@@ -10,7 +10,7 @@ class TestAddition(unittest.TestCase):
         self.assertEqual(add(1.5, 2.5), 4.0)
     
     def test_add_negative(self):
-        self.assertEqual(add(-1, -2), 3)
+        self.assertEqual(add(-1, -2), -3)
 
 # Si mon fichier est exécute comme fichier principal "python test_addition.py"
 # le code ci-dessous sera exécuté

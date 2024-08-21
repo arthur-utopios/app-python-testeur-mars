@@ -1,21 +1,32 @@
 name: Python application CI
 
+# Github va écouter les événements qu'on lui paramètre
+# Dans ce cas précis, si un push est effectué sur la branche 'main'
+# Il déclenche les jobs!
 on:
   push:
     branches: [main]
 
 jobs:
+  # Un job c'est un traitement qui va tourner dans un conteneur
+  # càd dans une machine virtuelle
   ci:
+
+    # On précise sur quel OS on souhaite exécuter les tests
     runs-on: ubuntu-latest
 
+    # Quelles sont les actions que l'on veut exécuter dans le conteneur
     steps:
       # Récupère les sources du dépôt dans le conteneur
       - uses: actions/checkout@v4
+
+      - run: ls
 
       # On configure python dans le conteneur
       - uses: actions/setup-python@v5
         # On sélectionne la version de python souhaitée
         with:
           python-version: '3.10'
+      
       # Exécution des tests de notre programme
       - run: python -m unittest test_addition.py
